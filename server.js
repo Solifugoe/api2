@@ -1,4 +1,5 @@
 const express = require("express");
+
 const bodyParser = require("body-parser");
 const pool = require("./conexion");
 const datos_usuarios = require("./routes/datos_usuario");
@@ -11,6 +12,11 @@ const login = require("./routes/login");
 
 const app = express();
 app.use(bodyParser.json());
+
+// Ruta para el endpoint raíz
+app.get('/', (req, res) => {
+    res.send('Bienvenido a la API');
+});
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
